@@ -104,27 +104,44 @@
 
                 // Methods run on jQuery selectors return the selector they we run on
                 // This is why we can create and save a reference to a td in the same statement we update its text
-                var tableNumberTd = $("<td>").text(tableNumber);
-                var customerNameTd = $("<td>").text(data[i].customerName);
+                var tableNumberTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'> <label>" + tableNumber + "</label>");
+                var customerNameTd = $("<td id='nameId'>").html("<label>" + data[i].customerName + "</label>");
                 var phoneNumberTd = $("<td>").text(data[i].phoneNumber);
                 var customerEmailTd = $("<td>").text(data[i].customerEmail);
-                var doneBoxTd = $("<td>").html("<h5><span class='label label-primary'><input type='checkbox' class='checkBoxClass' onClick='myFinction()'></span></h5>");
+                var doneBoxTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'> <label>" + data[i].customerName + " " + data[i].phoneNumber + " " + data[i].customerEmail + "</label>");
                 // Append the newly created table data to the table row
                 tRow.append(tableNumberTd, customerNameTd, phoneNumberTd, customerEmailTd, doneBoxTd);
                 // Append the table row to the table body
                 tBody.append(tRow);
 
-                // function myFunction() {
+                $("#nameId").click(function () {
+                    $("#nameId").wrap("<strike>");
 
-                //     var checkBox = $(".checkBoxClass")
-
-                //     if (checkBox.checked == true) {
-                //         $("$table-" + i + 1).css("background-color", "green");
-                //     }
-                // }
+                });
+                // $(":checkbox").on("change", function () {
+                //     var that = this;
+                //     $(this).parent().css("background-color", function () {
+                //         return that.checked ? "#ff0000" : "";
+                //     });
+                // });
 
             };
         };
+
+        $(function () {
+            var $curParent, Content;
+            $(document).delegate("label", "click", function () {
+                if ($(this).closest("l").length) {
+                    Content = $(this).parent("l").html();
+                    $curParent = $(this).closest("l");
+                    $(Content).insertAfter($curParent);
+                    $(this).closest("l").remove();
+                }
+                else {
+                    $(this).wrapAll("<l />");
+                }
+            });
+        });
 
         function runTableQuery() {
             var currentURL = window.location.origin;

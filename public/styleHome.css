@@ -31,6 +31,15 @@ a {
     color: yellow;
 }
 
+
+input[type=checkbox]:checked + label {
+    color:red;
+    text-decoration: line-through;
+  }
+
+
+
+
 @media only screen and (max-width: 600px) {
 
 h1 {
