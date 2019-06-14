@@ -1,6 +1,6 @@
-# Waiting-List-App
+# Waiting-List-App-Table
 
-Waiting List App
+Waiting List App Table
 
 ## Screenshot
 * Main Page
