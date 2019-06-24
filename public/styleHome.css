@@ -72,6 +72,8 @@ h5 {
     margin-right: 10px;
     }
 
-
+#doneSpan {
+    display: none;
+}
 
 };

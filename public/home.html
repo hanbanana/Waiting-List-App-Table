@@ -58,7 +58,7 @@
                 Waiting List
             </div> -->
 
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -112,7 +112,7 @@
                 var phoneNumberTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'><span>" + data[i].phoneNumber + "</span>");
                 var customerEmailTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'><span>" + data[i].customerEmail + "</span>");
                 var customerTimeTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'><span>" + data[i].reserveTime + "</span>");
-                var doneBoxTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'> <span>" + data[i].customerName + " " + data[i].phoneNumber + " " + data[i].customerEmail + "</span>");
+                var doneBoxTd = $("<td>").html("<input type='checkbox' class='cbox4' value='fourth_checkbox'> <span id='doneSpan'>" + data[i].customerName + " " + data[i].phoneNumber + " " + data[i].customerEmail + "</span>");
                 // Append the newly created table data to the table row
                 tRow.append(tableNumberTd, customerNameTd, phoneNumberTd, customerEmailTd, customerTimeTd, doneBoxTd);
                 // Append the table row to the table body
