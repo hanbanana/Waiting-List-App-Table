@@ -24,9 +24,9 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
-        <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Fredoka+One&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" type="text/css" href="./styleReserve.css">
 
@@ -41,7 +41,8 @@
             <div class="headingContainer">
                 <h1 id="heading">Yoolp Restaurant Waiting List</h1>
                 <br>
-                <a href="/"><button type="button" class="btn btn-lg btn-success"><i class="fa fa-users" style="font-size:36px"></i></span></button></a>
+                <a href="/"><button type="button" class="btn btn-lg btn-success"><i class="fa fa-users"
+                            style="font-size:36px"></i></span></button></a>
                 </p>
             </div>
         </div>
@@ -73,6 +74,13 @@
                         <input type="email" name="emailaddress" class="form-control" id="reserve-email"
                             placeholder="ex) youremail@example.com" required>
                     </div>
+
+                    <!-- <div class="form-group">
+                        <label for="reserve-time">Time</label>
+                        <input type="" name="emailaddress" class="form-control" id="reserve-time"
+                            placeholder="ex) 00:00:PM" value='now' disabled="disabled" required><button
+                            onclick="myFunction()" class="btn-sm btn-warning currentTimeButton">Current Time</button>
+                    </div> -->
                     <br>
                     <button type="submit" value="Submit" class="btn btn-danger submit">Submit</button>
                 </form>
@@ -108,22 +116,51 @@
         $("#createList").on("submit", function (event) {
             event.preventDefault();
 
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            if (h < 10) h = '0' + h;
+            if (m < 10) m = '0' + m;
+
             var newReservation = {
                 customerName: $("#reserve-name").val().trim(),
                 phoneNumber: $("#reserve-phone").val().trim(),
                 customerEmail: $("#reserve-email").val().trim(),
+                // reserveTime: $("#reserve-time").val().trim(),
+                reserveTime: h + ":" + m,
             };
 
             $.post("/api/tables", newReservation)
                 .then(
                     $("#reserve-name").val(""),
                     $("#reserve-phone").val(""),
-                    $("#reserve-email").val("")
+                    $("#reserve-email").val(""),
+                    $("#reserve-time").val("")
                 )
 
         })
 
+        // Click the button to display the hour and minute of the time right now
+        function myFunction() {
+            var d = new Date();
+            var h = d.getHours();
+            var m = d.getMinutes();
+            if (h < 10) h = '0' + h;
+            if (m < 10) m = '0' + m;
+            document.getElementById("reserve-time").value = h + ":" + m;
+        }
 
+        // display the hour and minute of the time right now
+        $(function () {
+            var d = new Date(),
+                h = d.getHours(),
+                m = d.getMinutes();
+            if (h < 10) h = '0' + h;
+            if (m < 10) m = '0' + m;
+            $('input[type=""][value="now"]').each(function () {
+                $(this).attr({ 'value': h + ':' + m });
+            });
+        });
 
     </script>
 

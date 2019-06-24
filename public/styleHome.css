@@ -32,8 +32,9 @@ a {
 }
 
 
-input[type=checkbox]:checked + label {
+input[type=checkbox]:checked + span {
     color:red;
+    background-color: yellow;
     text-decoration: line-through;
   }
 

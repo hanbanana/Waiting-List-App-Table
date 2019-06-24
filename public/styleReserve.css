@@ -21,11 +21,14 @@ margin-top: 20px;
 
 #formSection {
     width: 400px;
-    height: 400px;
+    height: 430px;
     margin-left: auto;
     margin-right: auto;
 }
 
+.currentTimeButton {
+    margin-top: 7px;
+}
 
 a {
     color: yellow;
